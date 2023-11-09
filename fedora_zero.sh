@@ -22,14 +22,17 @@ fi
 flatpak install --noninteractive -y flathub org.qbittorrent.qBittorrent
 
 # Установка набора для Игр
-sudo dnf install steam wine-core mangohud gamemode -y && flatpak install --noninteractive -y com.vysp3r.ProtonPlus
+sudo dnf install steam wine-core mangohud gamemode goverlay -y && flatpak install --noninteractive -y com.vysp3r.ProtonPlus
 
 # Установка всякой всячины
 sudo dnf install papirus-icon-theme
+
 wget -qO- https://git.io/papirus-folders-install | sh
 papirus-folders -C adwaita --theme Papirus-Dark
+
 sudo dnf install gnome-tweaks && flatpak install --noninteractive -y flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager
-sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
+
+dnf install ffmpeg-free gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
 sudo dnf install lame\* --exclude=lame-devel -y
 sudo dnf group upgrade --with-optional Multimedia -y
 
